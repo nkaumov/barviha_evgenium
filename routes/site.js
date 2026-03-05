@@ -1,8 +1,16 @@
 ﻿const express = require("express");
+const crypto = require("crypto");
 const locale = require("../config/locales/ru.json");
 const { pool } = require("../config/db");
 
 const router = express.Router();
+const OTP_TTL_MINUTES = 5;
+const OTP_MAX_ATTEMPTS = 5;
+
+const hashCode = (value) =>
+  crypto.createHash("sha256").update(String(value)).digest("hex");
+
+const TEST_OTP_CODE = "123456";
 
 const slugify = (value) =>
   String(value || "")
@@ -234,62 +242,244 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post("/presentation-request", async (req, res) => {
-  const rawReturnTo = String(req.body.return_to || "").trim();
-  const fallbackReferer = String(req.get("referer") || "").trim();
-  const returnBase = (() => {
-    const candidates = [rawReturnTo, fallbackReferer];
-    for (const candidate of candidates) {
-      if (!candidate) continue;
-      try {
-        const parsed = new URL(candidate, "http://localhost");
-        const path = `${parsed.pathname || "/"}${parsed.search || ""}`;
-        if (path.startsWith("/") && !path.startsWith("//")) return path;
-      } catch {
-        continue;
-      }
-    }
-    return "/";
-  })();
-
+router.post("/phone-verification/request", async (req, res) => {
+  const phoneRaw = String(req.body.phone || "").trim();
+  const phone = phoneRaw.replace(/[^\d+]/g, "");
   const sourceRaw = String(req.body.source_page || "").trim();
   const safeSource = sourceRaw ? sourceRaw.slice(0, 255) : "modal";
 
-  const buildReturnUrl = (status) => {
-    const separator = returnBase.includes("?") ? "&" : "?";
-    return `${returnBase}${separator}lead=${status}&source=${encodeURIComponent(safeSource)}`;
-  };
-
-  const fullName = String(req.body.name || "").trim();
-  const phoneRaw = String(req.body.phone || "").trim();
-  const phone = phoneRaw.replace(/[^\d+]/g, "");
-
-  if (!fullName || phone.length < 7) {
-    return res.redirect(buildReturnUrl("error"));
+  if (phone.length < 10) {
+    return res.status(400).json({
+      ok: false,
+      message: "Введите корректный номер телефона."
+    });
   }
 
   try {
-    await pool.query(
+    const [insertInquiry] = await pool.query(
       `
       INSERT INTO inquiries (
         full_name,
         phone,
+        phone_verified,
         message,
         source_page,
         status
-      ) VALUES (?, ?, ?, ?, 'new')
+      ) VALUES (?, ?, 0, ?, ?, 'new')
     `,
-      [
-        fullName,
-        phone,
-        "Запрос презентации",
-        safeSource
-      ]
+      ["Не указано", phone, "Черновик заявки до подтверждения телефона", safeSource]
     );
 
-    return res.redirect(buildReturnUrl("success"));
+    const inquiryId = insertInquiry.insertId;
+    const codeHash = hashCode(TEST_OTP_CODE);
+    const expiresAt = new Date(Date.now() + OTP_TTL_MINUTES * 60 * 1000);
+
+    const [insertVerification] = await pool.query(
+      `
+      INSERT INTO phone_verifications (
+        inquiry_id,
+        phone,
+        code_hash,
+        expires_at
+      ) VALUES (?, ?, ?, ?)
+    `,
+      [inquiryId, phone, codeHash, expiresAt]
+    );
+
+    console.log(
+      `[OTP TEST] inquiry=${inquiryId} phone=${phone} code=${TEST_OTP_CODE} expires=${expiresAt.toISOString()}`
+    );
+
+    return res.status(200).json({
+      ok: true,
+      inquiryId,
+      verificationId: insertVerification.insertId
+    });
   } catch {
-    return res.redirect(buildReturnUrl("error"));
+    return res.status(500).json({
+      ok: false,
+      message: "Не удалось отправить код. Попробуйте еще раз."
+    });
+  }
+});
+
+router.post("/phone-verification/confirm", async (req, res) => {
+  const verificationId = Number(req.body.verification_id);
+  const inquiryId = Number(req.body.inquiry_id);
+  const code = String(req.body.code || "").trim();
+
+  if (!verificationId || !inquiryId || !/^\d{6}$/.test(code)) {
+    return res.status(400).json({
+      ok: false,
+      message: "Введите корректный 6-значный код."
+    });
+  }
+
+  try {
+    const [rows] = await pool.query(
+      `
+      SELECT
+        id,
+        inquiry_id AS inquiryId,
+        code_hash AS codeHash,
+        expires_at AS expiresAt,
+        attempts,
+        verified_at AS verifiedAt
+      FROM phone_verifications
+      WHERE id = ? AND inquiry_id = ?
+      LIMIT 1
+    `,
+      [verificationId, inquiryId]
+    );
+
+    const verification = rows[0];
+    if (!verification) {
+      return res.status(404).json({
+        ok: false,
+        message: "Код подтверждения не найден."
+      });
+    }
+
+    if (verification.verifiedAt) {
+      return res.status(200).json({ ok: true });
+    }
+
+    const now = new Date();
+    if (new Date(verification.expiresAt) < now || verification.attempts >= OTP_MAX_ATTEMPTS) {
+      return res.status(400).json({
+        ok: false,
+        message: "Код истек. Запросите новый код."
+      });
+    }
+
+    const isValid = code === TEST_OTP_CODE && verification.codeHash === hashCode(TEST_OTP_CODE);
+    if (!isValid) {
+      await pool.query(
+        `
+        UPDATE phone_verifications
+        SET attempts = attempts + 1
+        WHERE id = ?
+      `,
+        [verificationId]
+      );
+
+      return res.status(400).json({
+        ok: false,
+        message: "Неверный код. Для теста используйте 123456."
+      });
+    }
+
+    await pool.query(
+      `
+      UPDATE phone_verifications
+      SET verified_at = NOW()
+      WHERE id = ?
+    `,
+      [verificationId]
+    );
+
+    await pool.query(
+      `
+      UPDATE inquiries
+      SET phone_verified = 1
+      WHERE id = ?
+    `,
+      [inquiryId]
+    );
+
+    return res.status(200).json({ ok: true });
+  } catch {
+    return res.status(500).json({
+      ok: false,
+      message: "Ошибка подтверждения. Повторите попытку."
+    });
+  }
+});
+
+router.post("/presentation-request", async (req, res) => {
+  const isAjax = req.get("x-requested-with") === "XMLHttpRequest";
+  const inquiryId = Number(req.body.inquiry_id);
+  const verificationId = Number(req.body.verification_id);
+  const fullName = String(req.body.name || "").trim();
+  const phoneRaw = String(req.body.phone || "").trim();
+  const phone = phoneRaw.replace(/[^\d+]/g, "");
+  const sourceRaw = String(req.body.source_page || "").trim();
+  const safeSource = sourceRaw ? sourceRaw.slice(0, 255) : "modal";
+
+  if (!inquiryId || !verificationId || !fullName || phone.length < 10) {
+    if (isAjax) {
+      return res.status(400).json({
+        ok: false,
+        message: "Заполните поля и подтвердите номер телефона."
+      });
+    }
+    return res.redirect("/?lead=error");
+  }
+
+  try {
+    const [rows] = await pool.query(
+      `
+      SELECT
+        i.id,
+        i.phone,
+        i.phone_verified AS phoneVerified,
+        pv.id AS verificationId,
+        pv.verified_at AS verifiedAt
+      FROM inquiries i
+      LEFT JOIN phone_verifications pv ON pv.id = ? AND pv.inquiry_id = i.id
+      WHERE i.id = ?
+      LIMIT 1
+    `,
+      [verificationId, inquiryId]
+    );
+
+    const inquiry = rows[0];
+    if (!inquiry || !inquiry.verificationId || !inquiry.phoneVerified || !inquiry.verifiedAt) {
+      if (isAjax) {
+        return res.status(400).json({
+          ok: false,
+          message: "Сначала подтвердите номер телефона."
+        });
+      }
+      return res.redirect("/?lead=error");
+    }
+
+    if (String(inquiry.phone || "") !== phone) {
+      if (isAjax) {
+        return res.status(400).json({
+          ok: false,
+          message: "Номер изменился. Подтвердите его повторно."
+        });
+      }
+      return res.redirect("/?lead=error");
+    }
+
+    await pool.query(
+      `
+      UPDATE inquiries
+      SET
+        full_name = ?,
+        message = ?,
+        source_page = ?,
+        status = 'new'
+      WHERE id = ?
+    `,
+      [fullName, "Запрос презентации", safeSource, inquiryId]
+    );
+
+    if (isAjax) {
+      return res.status(200).json({ ok: true });
+    }
+
+    return res.redirect("/?lead=success");
+  } catch {
+    if (isAjax) {
+      return res.status(500).json({
+        ok: false,
+        message: "Не удалось отправить заявку. Попробуйте еще раз."
+      });
+    }
+    return res.redirect("/?lead=error");
   }
 });
 

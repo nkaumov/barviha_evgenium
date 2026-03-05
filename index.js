@@ -15,6 +15,16 @@ const buildLeadStatus = (query = {}) => {
     return { submitted: true, error: false };
   }
 
+  if (query.lead === "verify") {
+    return {
+      submitted: false,
+      error: false,
+      verify: true,
+      verificationId: String(query.verification_id || ""),
+      inquiryId: String(query.inquiry_id || "")
+    };
+  }
+
   if (query.lead === "error") {
     return { submitted: false, error: true };
   }

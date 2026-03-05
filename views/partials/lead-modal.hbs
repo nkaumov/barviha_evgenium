@@ -2,7 +2,7 @@
   class="presentation-modal"
   id="presentation-modal"
   aria-hidden="true"
-  data-auto-open="{{#if leadAutoOpen}}1{{else}}0{{/if}}"
+  data-auto-open="0"
   data-open-source="{{leadSource}}"
 >
   <div class="presentation-modal__backdrop" data-close-presentation-modal></div>
@@ -10,33 +10,61 @@
     <button class="presentation-modal__close" type="button" aria-label="{{t "common.close"}}" data-close-presentation-modal>
       <i class="material-icons" aria-hidden="true">close</i>
     </button>
-    {{#if leadStatus.submitted}}
+
+    <div id="presentation-step-request" class="presentation-step">
+      <h3 class="presentation-modal__title" id="presentation-modal-title">{{t "home.presentationModalTitle"}}</h3>
+      <p class="presentation-modal__subtitle">{{t "home.presentationModalSubtitle"}}</p>
+      <p class="presentation-modal__error is-hidden" id="presentation-modal-error"></p>
+
+      <form id="presentation-modal-form" class="presentation-modal__form" action="/presentation-request" method="post">
+        <label class="presentation-modal__field">
+          <span>{{t "home.requestNameLabel"}}</span>
+          <input type="text" id="presentation-name-input" name="name" placeholder="{{t "home.requestNamePlaceholder"}}" required />
+        </label>
+
+        <label class="presentation-modal__field">
+          <span>{{t "home.requestPhoneLabel"}}</span>
+          <div class="presentation-modal__inline">
+            <input type="tel" id="presentation-phone-input" name="phone" placeholder="{{t "home.requestPhonePlaceholder"}}" required />
+            <button class="presentation-modal__inline-btn" id="phone-request-btn" type="button" disabled>
+              {{t "home.phoneRequestCode"}}
+            </button>
+          </div>
+        </label>
+
+        <div class="presentation-modal__code-block is-hidden" id="phone-code-block">
+          <label class="presentation-modal__field">
+            <span>{{t "home.presentationVerifyLabel"}}</span>
+            <div class="presentation-modal__inline">
+              <input type="text" id="phone-code-input" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="123456" />
+              <button class="presentation-modal__inline-btn" id="phone-confirm-btn" type="button" disabled>
+                {{t "home.presentationVerifySubmit"}}
+              </button>
+            </div>
+          </label>
+        </div>
+
+        <p class="presentation-modal__status is-hidden" id="phone-verify-status"></p>
+
+        <input type="hidden" name="inquiry_id" id="inquiry-id-input" value="" />
+        <input type="hidden" name="verification_id" id="verification-id-input" value="" />
+        <input type="hidden" name="source_page" id="presentation-source-input" value="modal" />
+        <input type="hidden" name="return_to" id="presentation-return-input" value="/" />
+
+        <button class="presentation-modal__submit" id="presentation-submit-btn" type="submit" disabled>
+          {{t "home.presentationModalSubmit"}}
+        </button>
+      </form>
+    </div>
+
+    <div id="presentation-step-success" class="presentation-step is-hidden">
       <div class="presentation-modal__success">
-        <h3 class="presentation-modal__title" id="presentation-modal-title">{{t "home.presentationSubmittedTitle"}}</h3>
+        <h3 class="presentation-modal__title">{{t "home.presentationSubmittedTitle"}}</h3>
         <p class="presentation-modal__subtitle">{{t "home.presentationSubmittedText"}}</p>
         <a class="presentation-modal__download" href="/media/docs/barviha-presentation.pdf" download>
           {{t "home.presentationDownloadNow"}}
         </a>
       </div>
-    {{else}}
-      <h3 class="presentation-modal__title" id="presentation-modal-title">{{t "home.presentationModalTitle"}}</h3>
-      <p class="presentation-modal__subtitle">{{t "home.presentationModalSubtitle"}}</p>
-      {{#if leadStatus.error}}
-        <p class="presentation-modal__error">{{t "home.presentationErrorMessage"}}</p>
-      {{/if}}
-      <form id="presentation-modal-form" class="presentation-modal__form" action="/presentation-request" method="post">
-        <label class="presentation-modal__field">
-          <span>{{t "home.requestNameLabel"}}</span>
-          <input type="text" name="name" placeholder="{{t "home.requestNamePlaceholder"}}" required />
-        </label>
-        <label class="presentation-modal__field">
-          <span>{{t "home.requestPhoneLabel"}}</span>
-          <input type="tel" name="phone" placeholder="{{t "home.requestPhonePlaceholder"}}" required />
-        </label>
-        <input type="hidden" name="source_page" id="presentation-source-input" value="modal" />
-        <input type="hidden" name="return_to" id="presentation-return-input" value="/" />
-        <button class="presentation-modal__submit" type="submit">{{t "home.presentationModalSubmit"}}</button>
-      </form>
-    {{/if}}
+    </div>
   </div>
 </div>

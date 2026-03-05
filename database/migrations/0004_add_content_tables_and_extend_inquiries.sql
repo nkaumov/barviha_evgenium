@@ -44,10 +44,10 @@ CREATE TABLE IF NOT EXISTS gallery_images (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 ALTER TABLE inquiries
-  ADD COLUMN IF NOT EXISTS messenger_profile_url VARCHAR(500) NULL AFTER phone;
+  ADD COLUMN messenger_profile_url VARCHAR(500) NULL AFTER phone;
 
 ALTER TABLE inquiries
-  ADD COLUMN IF NOT EXISTS requested_object_id BIGINT UNSIGNED NULL AFTER house_id;
+  ADD COLUMN requested_object_id BIGINT UNSIGNED NULL AFTER house_id;
 
 ALTER TABLE inquiries
   ADD KEY idx_inquiries_requested_object (requested_object_id);

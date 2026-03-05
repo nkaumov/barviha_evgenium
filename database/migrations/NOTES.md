@@ -4,3 +4,4 @@
 - 2026-03-05: Added `0002_example_next_file.sql` with initial houses seed.
 - 2026-03-05: Added `0003_add_villages_and_link_houses.sql` (villages table, relation houses->villages, expanded seed to 30 houses).
 - 2026-03-05: Added `0004_add_content_tables_and_extend_inquiries.sql` (tables `articles`, `galleries`, `gallery_images`; extended `inquiries` with messenger profile URL and requested object link).
+- 2026-03-06: Added `0005_add_phone_verification.sql` (`inquiries.phone_verified`, new table `phone_verifications` for OTP flow).

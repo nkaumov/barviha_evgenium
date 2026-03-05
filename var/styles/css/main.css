@@ -871,6 +871,10 @@ body {
   gap: 0.65rem;
 }
 
+.is-hidden {
+  display: none !important;
+}
+
 .presentation-modal__error {
   margin: 0 0 0.7rem;
   border: 1px solid #efcccc;
@@ -897,6 +901,59 @@ body {
   border-radius: 6px;
   padding: 0.62rem 0.72rem;
   margin: 0;
+}
+
+.presentation-modal__inline {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.presentation-modal__inline-btn {
+  appearance: none;
+  border: 1px solid #1f2937;
+  border-radius: 6px;
+  background: #1f2937;
+  color: #fff;
+  height: 40px;
+  padding: 0 0.9rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.presentation-modal__inline-btn:hover,
+.presentation-modal__inline-btn:focus,
+.presentation-modal__inline-btn:focus-visible,
+.presentation-modal__inline-btn:active {
+  background: #111827 !important;
+  border-color: #111827 !important;
+  color: #fff !important;
+  outline: none;
+}
+
+.presentation-modal__inline-btn:disabled,
+.presentation-modal__submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.presentation-modal__status {
+  margin: 0.1rem 0 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.presentation-modal__status.is-info {
+  color: #334155;
+}
+
+.presentation-modal__status.is-success {
+  color: #166534;
 }
 
 .presentation-modal__submit {
@@ -972,6 +1029,14 @@ body.modal-open {
   overflow: hidden;
 }
 
+@media (max-width: 640px) {
+  .presentation-modal__inline {
+    grid-template-columns: 1fr;
+  }
+  .presentation-modal__inline-btn {
+    width: 100%;
+  }
+}
 .villages-roulette-section {
   --v-gap: 16px;
   --vcard-w: 340px;
