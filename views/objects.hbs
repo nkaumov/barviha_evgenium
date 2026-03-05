@@ -1,0 +1,104 @@
+﻿<section class="container section">
+  <h1 class="page-title">{{t "objectsPage.title"}}</h1>
+  <p class="page-subtitle">{{t "objectsPage.subtitle"}}</p>
+
+  <div class="objects-layout">
+    <aside class="objects-filters card-panel filters-panel">
+      <h2 class="section-title">{{t "objectsPage.filtersTitle"}}</h2>
+
+      <div class="objects-filter-block">
+        <label class="objects-filter-title">{{t "objectsPage.price"}}</label>
+        <div class="objects-dual-range" id="objects-price-range">
+          <input id="filter-price-min" type="range" min="{{objectsFilterBounds.priceMin}}" max="{{objectsFilterBounds.priceMax}}" value="{{objectsFilterBounds.priceMin}}" />
+          <input id="filter-price-max" type="range" min="{{objectsFilterBounds.priceMin}}" max="{{objectsFilterBounds.priceMax}}" value="{{objectsFilterBounds.priceMax}}" />
+        </div>
+        <small class="objects-range-values"><span id="filter-price-min-val">{{objectsFilterBounds.priceMin}}</span> — <span id="filter-price-max-val">{{objectsFilterBounds.priceMax}}</span></small>
+      </div>
+
+      <div class="objects-filter-block">
+        <label class="objects-filter-title">{{t "objectsPage.houseArea"}}</label>
+        <div class="objects-dual-range" id="objects-area-range">
+          <input id="filter-area-min" type="range" min="{{objectsFilterBounds.areaMin}}" max="{{objectsFilterBounds.areaMax}}" value="{{objectsFilterBounds.areaMin}}" />
+          <input id="filter-area-max" type="range" min="{{objectsFilterBounds.areaMin}}" max="{{objectsFilterBounds.areaMax}}" value="{{objectsFilterBounds.areaMax}}" />
+        </div>
+        <small class="objects-range-values"><span id="filter-area-min-val">{{objectsFilterBounds.areaMin}}</span> — <span id="filter-area-max-val">{{objectsFilterBounds.areaMax}}</span> {{t "units.squareMeters"}}</small>
+      </div>
+
+      <div class="objects-filter-block">
+        <label class="objects-filter-title">{{t "objectsPage.distance"}}</label>
+        <div class="objects-dual-range" id="objects-distance-range">
+          <input id="filter-distance-min" type="range" min="{{objectsFilterBounds.distanceMin}}" max="{{objectsFilterBounds.distanceMax}}" value="{{objectsFilterBounds.distanceMin}}" />
+          <input id="filter-distance-max" type="range" min="{{objectsFilterBounds.distanceMin}}" max="{{objectsFilterBounds.distanceMax}}" value="{{objectsFilterBounds.distanceMax}}" />
+        </div>
+        <small class="objects-range-values"><span id="filter-distance-min-val">{{objectsFilterBounds.distanceMin}}</span> — <span id="filter-distance-max-val">{{objectsFilterBounds.distanceMax}}</span> {{t "objectsPage.distanceFromMkadSuffix"}}</small>
+      </div>
+
+      <div class="objects-filter-block">
+        <label class="objects-filter-title">{{t "objectsPage.plot"}}</label>
+        <div class="objects-dual-range" id="objects-plot-range">
+          <input id="filter-plot-min" type="range" min="{{objectsFilterBounds.plotMin}}" max="{{objectsFilterBounds.plotMax}}" step="0.1" value="{{objectsFilterBounds.plotMin}}" />
+          <input id="filter-plot-max" type="range" min="{{objectsFilterBounds.plotMin}}" max="{{objectsFilterBounds.plotMax}}" step="0.1" value="{{objectsFilterBounds.plotMax}}" />
+        </div>
+        <small class="objects-range-values"><span id="filter-plot-min-val">{{objectsFilterBounds.plotMin}}</span> — <span id="filter-plot-max-val">{{objectsFilterBounds.plotMax}}</span> {{t "units.acres"}}</small>
+      </div>
+
+      <div class="objects-filter-block">
+        <label class="objects-filter-title">{{t "objectsPage.village"}}</label>
+        <div class="objects-check-grid">
+          {{#each objectsFilterVillages}}
+            <label>
+              <input type="checkbox" class="filled-in objects-filter-village" value="{{slug}}" />
+              <span>{{name}}</span>
+            </label>
+          {{/each}}
+        </div>
+      </div>
+
+      <div class="objects-filter-block">
+        <label class="objects-filter-title">{{t "objectsPage.floors"}}</label>
+        <div class="objects-check-grid">
+          <label><input type="checkbox" class="filled-in objects-filter-floor" value="1" /><span>1</span></label>
+          <label><input type="checkbox" class="filled-in objects-filter-floor" value="2" /><span>2</span></label>
+          <label><input type="checkbox" class="filled-in objects-filter-floor" value="3" /><span>3</span></label>
+          <label><input type="checkbox" class="filled-in objects-filter-floor" value="4plus" /><span>4+</span></label>
+        </div>
+      </div>
+
+      <button class="bubbly-button" type="button" id="reset-filters">Сбросить</button>
+    </aside>
+
+    <div class="row objects-grid" id="objects-grid">
+      {{#each objects}}
+        <div
+          class="col s12 m6 l4 object-item"
+          data-price="{{price}}"
+          data-area="{{area}}"
+          data-distance="{{distance}}"
+          data-floors="{{floors}}"
+          data-plot="{{plotArea}}"
+          data-village-slug="{{villageSlug}}"
+        >
+          <article class="card object-card">
+            <div class="card-image">
+              <img src="{{image}}" alt="{{title}}" />
+            </div>
+            <div class="card-content">
+              <span class="card-title">{{title}}</span>
+              <p><strong>{{t "objectsPage.village"}}</strong> {{village}}</p>
+              <p><strong>{{t "objectsPage.price"}}</strong> {{price}} {{t "units.currency"}}</p>
+              <p><strong>{{t "objectsPage.houseArea"}}</strong> {{area}} {{t "units.squareMeters"}}</p>
+            </div>
+            <div class="card-action">
+              <a class="learn-more" href="/objects/{{id}}">
+                <span class="circle" aria-hidden="true">
+                  <span class="icon arrow"></span>
+                </span>
+                <span class="button-text">{{t "objectsPage.moreDetails"}}</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,241 @@
+.villages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+
+  > .col {
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    float: none !important;
+    display: flex;
+  }
+
+  .village-card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+
+  .village-card .card-image img {
+    height: 220px;
+    object-fit: cover;
+  }
+
+  .village-card .card-content {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .village-card .card-content .card-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+    overflow: hidden;
+    min-height: 3rem;
+    line-height: 1.5rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .village-card .card-content p:first-of-type {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-clamp: 3;
+    overflow: hidden;
+    min-height: 4.35rem;
+  }
+
+  .village-card .card-action {
+    margin-top: auto;
+  }
+}
+
+.village-detail-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+  gap: 1rem;
+  margin-top: 1rem;
+  overflow: hidden;
+
+  .village-detail-hero__media {
+    display: grid;
+    grid-template-rows: minmax(320px, 420px) auto;
+    gap: 0.55rem;
+    padding: 0.65rem 0.65rem 0.65rem 0.65rem;
+  }
+
+  .village-detail-hero__main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  .village-detail-hero__thumbs {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+
+  .village-thumb {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    outline: none;
+    opacity: 0.85;
+    transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .village-thumb img {
+    width: 100%;
+    height: 88px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .village-thumb:hover,
+  .village-thumb:focus-visible {
+    opacity: 1;
+    transform: translateY(-1px);
+  }
+
+  .village-thumb.is-active {
+    opacity: 1;
+    box-shadow: inset 0 0 0 2px #c79a5b;
+  }
+
+  .village-detail-hero__content {
+    padding: 1.1rem 1.15rem 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .village-detail-hero__title {
+    margin: 0;
+    font-size: clamp(1.5rem, 2.2vw, 2rem);
+  }
+
+  .village-detail-hero__description {
+    margin: 0;
+    color: #424242;
+    line-height: 1.55;
+  }
+
+  .village-detail-hero__facts {
+    display: grid;
+    gap: 0.45rem;
+    margin-top: 0.25rem;
+  }
+
+  .village-detail-hero__facts span {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    max-width: 100%;
+    padding: 0.38rem 0.7rem;
+    border-radius: 999px;
+    background: #f2f5f8;
+    color: #2e2e2e;
+    font-size: 0.92rem;
+  }
+}
+
+.village-houses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+
+  > .col {
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    float: none !important;
+    display: flex;
+  }
+
+  .object-card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+
+  .object-card .card-content {
+    flex: 1 1 auto;
+  }
+}
+
+@media (max-width: 992px) {
+  .villages-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .village-detail-hero {
+    grid-template-columns: 1fr;
+
+    .village-detail-hero__media {
+      grid-template-rows: minmax(280px, 360px) auto;
+    }
+
+    .village-detail-hero__thumbs {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .village-detail-hero__thumbs img {
+      height: 84px;
+    }
+
+    .village-thumb img {
+      height: 84px;
+    }
+  }
+
+  .village-houses-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .villages-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .village-detail-hero {
+    .village-detail-hero__media {
+      padding: 0.55rem;
+      grid-template-rows: 250px auto;
+    }
+
+    .village-detail-hero__thumbs {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.4rem;
+    }
+
+    .village-thumb img {
+      height: 74px;
+    }
+  }
+
+  .village-houses-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.map-block {
+  min-height: 260px;
+  padding: 1rem;
+  border: 1px dashed #bbb;
+  border-radius: $card-radius;
+  background: #fff;
+}

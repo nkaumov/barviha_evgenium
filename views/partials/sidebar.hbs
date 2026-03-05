@@ -1,0 +1,39 @@
+﻿<button
+  class="sidebar-btn"
+  id="sidebarToggle"
+  type="button"
+  aria-label="{{t "common.menu"}}"
+  aria-controls="siteSidebar"
+  aria-expanded="false"
+  data-magnet="1"
+>
+  <span class="sidebar-btn__icon" aria-hidden="true">
+    <span></span><span></span><span></span>
+  </span>
+</button>
+
+<div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+
+<aside
+  class="sidebar"
+  id="siteSidebar"
+  role="dialog"
+  aria-modal="true"
+  aria-label="{{t "common.menu"}}"
+>
+  <div class="sidebar__content">
+    <div class="sidebar__header">
+      <div class="sidebar__title">
+        <strong>{{t "common.brand"}}</strong>
+        <span>{{t "common.menu"}}</span>
+      </div>
+    </div>
+
+    <div class="sidebar__nav" role="navigation" aria-label="{{t "common.menu"}}">
+      <a href="/"><span class="sidebar__dot" aria-hidden="true"></span><span>{{t "nav.home"}}</span></a>
+      <a href="/villages"><span class="sidebar__dot" aria-hidden="true"></span><span>{{t "nav.villages"}}</span></a>
+      <a href="/objects"><span class="sidebar__dot" aria-hidden="true"></span><span>{{t "nav.objects"}}</span></a>
+      <a href="/contacts"><span class="sidebar__dot" aria-hidden="true"></span><span>{{t "nav.contacts"}}</span></a>
+    </div>
+  </div>
+</aside>

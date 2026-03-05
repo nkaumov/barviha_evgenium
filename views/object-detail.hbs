@@ -1,0 +1,51 @@
+<section class="container section">
+  <a href="/objects" class="btn-flat"><- {{t "objectsPage.title"}}</a>
+
+  <article class="card object-detail-hero">
+    <div class="object-detail-hero__media">
+      <img
+        class="object-detail-hero__main-image"
+        src="{{objectGalleryMain}}"
+        alt="{{object.title}}"
+        id="village-main-image"
+      />
+      {{#if objectGalleryThumbs.length}}
+        <div class="object-detail-hero__thumbs">
+          {{#each objectGalleryThumbs}}
+            <button
+              class="village-thumb{{#if @first}} is-active{{/if}}"
+              type="button"
+              data-image="{{this}}"
+              aria-label="{{../object.title}}"
+            >
+              <img src="{{this}}" alt="{{../object.title}}" />
+            </button>
+          {{/each}}
+        </div>
+      {{/if}}
+    </div>
+
+    <div class="card-content object-detail-hero__content">
+      <h1 class="card-title object-detail-hero__title">{{object.title}}</h1>
+      <p class="object-detail-hero__description">{{object.description}}</p>
+
+      <div class="object-detail-hero__facts">
+        <span><strong>{{t "objectsPage.village"}}</strong> {{object.village}}</span>
+        <span><strong>{{t "objectsPage.price"}}</strong> {{object.price}} {{t "units.currency"}}</span>
+        <span><strong>{{t "objectsPage.houseArea"}}</strong> {{object.area}} {{t "units.squareMeters"}}</span>
+        <span><strong>{{t "objectsPage.distance"}}</strong> {{object.distance}} {{t "objectsPage.distanceFromMkadSuffix"}}</span>
+        <span><strong>{{t "objectsPage.floors"}}:</strong> {{object.floors}}</span>
+        <span><strong>{{t "objectsPage.plot"}}</strong> {{object.plotArea}} {{t "units.acres"}}</span>
+      </div>
+    </div>
+
+    <div class="card-action object-detail-hero__actions">
+      <a class="learn-more" href="/?requestObject={{object.id}}#request-form">
+        <span class="circle" aria-hidden="true">
+          <span class="icon arrow"></span>
+        </span>
+        <span class="button-text">{{t "home.ctaRequest"}}</span>
+      </a>
+    </div>
+  </article>
+</section>

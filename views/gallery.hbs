@@ -1,0 +1,36 @@
+<section class="container section gallery-page">
+  <a href="/" class="btn-flat"><- {{t "nav.home"}}</a>
+
+  <header class="gallery-page__header">
+    <h1>{{galleryTitle}}</h1>
+    <p>{{gallerySubtitle}}</p>
+  </header>
+
+  <div class="gallery-grid" id="life-gallery-grid-page">
+    {{#each galleryItems}}
+      <button class="gallery-grid__item" type="button" data-gallery-index="{{@index}}" data-gallery-src="{{image}}" data-gallery-title="{{title}}">
+        <img src="{{image}}" alt="{{title}}" loading="lazy" />
+        <span class="gallery-grid__caption">{{title}}</span>
+      </button>
+    {{/each}}
+  </div>
+</section>
+
+<div class="gallery-lightbox" id="gallery-lightbox" aria-hidden="true">
+  <button class="gallery-lightbox__backdrop" type="button" data-gallery-close aria-label="Close viewer"></button>
+  <div class="gallery-lightbox__dialog" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button class="gallery-lightbox__close" type="button" data-gallery-close aria-label="Close">
+      <i class="material-icons">close</i>
+    </button>
+    <button class="gallery-lightbox__nav gallery-lightbox__nav--prev" type="button" data-gallery-prev aria-label="Previous photo">
+      <i class="material-icons">chevron_left</i>
+    </button>
+    <figure class="gallery-lightbox__figure">
+      <img id="gallery-lightbox-image" src="" alt="" />
+      <figcaption id="gallery-lightbox-caption"></figcaption>
+    </figure>
+    <button class="gallery-lightbox__nav gallery-lightbox__nav--next" type="button" data-gallery-next aria-label="Next photo">
+      <i class="material-icons">chevron_right</i>
+    </button>
+  </div>
+</div>

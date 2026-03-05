@@ -1,0 +1,32 @@
+html {
+  scrollbar-gutter: stable;
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: $bg-color;
+  color: $text-color;
+}
+
+.page-main {
+  min-height: calc(100vh - 128px);
+}
+
+.section-title {
+  font-size: 1.4rem;
+  margin: 0 0 1rem;
+}
+
+.page-title {
+  margin: 0 0 0.5rem;
+}
+
+.page-subtitle {
+  color: $muted-color;
+  margin: 0 0 1.5rem;
+}

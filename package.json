@@ -1,0 +1,28 @@
+{
+  "name": "barviha",
+  "version": "1.0.0",
+  "description": "Barviha real estate showcase on Node.js + Express + HBS + MySQL",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "migrate": "node database/migrate.js",
+    "build:css": "sass public/scss/main.scss var/styles/css/main.css --style=expanded && sass public/scss/sidebar.scss var/styles/css/sidebar.css --style=expanded",
+    "watch:css": "sass public/scss/main.scss var/styles/css/main.css --watch --style=expanded",
+    "watch:css:sidebar": "sass public/scss/sidebar.scss var/styles/css/sidebar.css --watch --style=expanded",
+    "test": "echo \"No tests configured\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "express-handlebars": "^7.1.2",
+    "mysql2": "^3.15.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10",
+    "sass": "^1.93.2"
+  }
+}

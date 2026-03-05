@@ -1,0 +1,171 @@
+﻿<section class="hero-section" aria-label="Главный баннер">
+  <video
+    class="hero-section__media"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+  >
+    <source src="/media/video/banner.mp4" type="video/mp4" />
+  </video>
+  <div class="hero-section__overlay"></div>
+
+  <div class="container hero-section__content">
+    <h1 class="hero-title">{{t "home.heroTitle"}}</h1>
+    <p class="hero-subtitle">{{t "home.heroSubtitle"}}</p>
+    <div class="hero-actions">
+      <a class="hero-neon-btn" href="/objects"><span></span>{{t "home.ctaObjects"}}</a>
+      <a class="glow-on-hover" href="#request-form">{{t "home.ctaRequest"}}</a>
+    </div>
+  </div>
+</section>
+
+<section class="container section villages-roulette-section">
+  <h2 class="section-title">{{t "home.villagesCarouselTitle"}}</h2>
+  <div class="villages-roulette-wrap">
+    <button class="villages-roulette-nav villages-roulette-nav--prev" type="button" aria-label="Предыдущий поселок">
+      <i class="material-icons">chevron_left</i>
+    </button>
+    <div class="villages-roulette" id="villages-roulette">
+      {{#each villagesCarousel}}
+        <a class="village-roulette-card" href="/villages/{{slug}}">
+          <img class="village-roulette-card__image" src="{{image}}" alt="{{name}}" draggable="false" />
+          <div class="village-roulette-card__overlay"></div>
+          <div class="village-roulette-card__content">
+            <h3>{{name}}</h3>
+            <p>{{t "villagesPage.housesCount"}} {{housesCount}}</p>
+          </div>
+        </a>
+      {{/each}}
+    </div>
+    <button class="villages-roulette-nav villages-roulette-nav--next" type="button" aria-label="Следующий поселок">
+      <i class="material-icons">chevron_right</i>
+    </button>
+  </div>
+  <div class="villages-roulette-section__actions">
+    <a class="learn-more" href="/villages">
+      <span class="circle" aria-hidden="true">
+        <span class="icon arrow"></span>
+      </span>
+      <span class="button-text">{{t "villagesPage.details"}}</span>
+    </a>
+  </div>
+</section>
+
+{{!--
+<section class="container section home-picker-section">
+  Временно отключенный блок фильтра главной страницы.
+</section>
+--}}
+
+<section class="container section life-gallery-section">
+  <h2 class="section-title">{{t "home.lifeGalleryTitle"}}</h2>
+  <div class="life-gallery-grid">
+    {{#each lifeGallery}}
+      <a class="life-gallery-card" href="/gallery/life">
+        <img src="{{image}}" alt="{{title}}" />
+        <div class="life-gallery-card__overlay"></div>
+        <div class="life-gallery-card__content">
+          <h3>{{title}}</h3>
+          <p>{{subtitle}}</p>
+        </div>
+      </a>
+    {{/each}}
+  </div>
+</section>
+
+<section class="container section life-articles-section">
+  <h2 class="section-title">{{t "home.lifeArticlesTitle"}}</h2>
+  <div class="life-slider-wrap">
+    <button class="life-slider-nav life-slider-nav--prev" type="button" aria-label="Предыдущая статья">
+      <i class="material-icons">chevron_left</i>
+    </button>
+    <div class="life-articles-track" id="life-articles-track">
+      {{#each lifeArticles}}
+        <article class="life-article-card">
+          <img src="{{image}}" alt="{{title}}" />
+          <div class="life-article-card__content">
+            <span class="life-article-card__date">{{date}}</span>
+            <h3>{{title}}</h3>
+            <p>{{excerpt}}</p>
+            <a class="learn-more" href="{{url}}">
+              <span class="circle" aria-hidden="true">
+                <span class="icon arrow"></span>
+              </span>
+              <span class="button-text">{{t "objectsPage.moreDetails"}}</span>
+            </a>
+          </div>
+        </article>
+      {{/each}}
+    </div>
+    <button class="life-slider-nav life-slider-nav--next" type="button" aria-label="Следующая статья">
+      <i class="material-icons">chevron_right</i>
+    </button>
+  </div>
+</section>
+
+<section class="container section life-testimonials-section">
+  <h2 class="section-title">{{t "home.testimonialsTitle"}}</h2>
+  <div class="life-slider-wrap">
+    <button class="testimonials-nav testimonials-nav--prev" type="button" aria-label="Предыдущая цитата">
+      <i class="material-icons">chevron_left</i>
+    </button>
+    <div class="testimonials-track" id="testimonials-track">
+      {{#each testimonials}}
+        <article class="testimonial-card">
+          <div class="testimonial-card__person">
+            <img src="{{image}}" alt="{{name}}" />
+            <div>
+              <h3>{{name}}</h3>
+              <p>{{role}}</p>
+            </div>
+          </div>
+          <blockquote>{{quote}}</blockquote>
+        </article>
+      {{/each}}
+    </div>
+    <button class="testimonials-nav testimonials-nav--next" type="button" aria-label="Следующая цитата">
+      <i class="material-icons">chevron_right</i>
+    </button>
+  </div>
+</section>
+
+<section class="container section review-form-section" id="request-form">
+  <h2 class="section-title">{{t "home.requestFormTitle"}}</h2>
+  <div class="review-form-layout">
+    <form class="review-form-card" id="review-form" action="#" method="post">
+      <input type="hidden" name="requestObject" id="request-object-id" />
+
+      <label class="review-form-field">
+        <span>{{t "home.requestNameLabel"}}</span>
+        <input type="text" name="name" placeholder="{{t "home.requestNamePlaceholder"}}" required />
+      </label>
+
+      <label class="review-form-field">
+        <span>{{t "home.requestPhoneLabel"}}</span>
+        <input type="tel" name="phone" placeholder="{{t "home.requestPhonePlaceholder"}}" required />
+      </label>
+
+      <label class="review-form-field">
+        <span>{{t "home.requestMessengerLabel"}}</span>
+        <input type="url" name="messenger" placeholder="{{t "home.requestMessengerPlaceholder"}}" required />
+      </label>
+
+      <label class="review-form-field">
+        <span>{{t "home.requestTextLabel"}}</span>
+        <textarea name="text" rows="5" placeholder="{{t "home.requestTextPlaceholder"}}" required></textarea>
+      </label>
+
+      <div class="review-submit-wrap">
+        <button class="review-submit" type="submit" id="review-submit">
+          <span class="review-submit__text">{{t "home.requestSubmitLabel"}}</span>
+          <span class="review-submit__progress"></span>
+          <svg viewBox="0 0 25 30" aria-hidden="true">
+            <path class="review-submit__check" d="M2,19.2C5.9,23.6,9.4,28,9.4,28L23,2" />
+          </svg>
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

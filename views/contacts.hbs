@@ -1,0 +1,31 @@
+﻿<section class="container section contacts-page">
+  <h1 class="page-title">{{t "contactsPage.title"}}</h1>
+  <p class="page-subtitle">{{t "contactsPage.subtitle"}}</p>
+
+  <div class="row">
+    <div class="col s12 m4">
+      <div class="card-panel">
+        <h2 class="section-title">{{t "contactsPage.telegram"}}</h2>
+        <a href="{{contact.telegramUrl}}" target="_blank" rel="noopener noreferrer">{{contact.telegramLabel}}</a>
+      </div>
+    </div>
+    <div class="col s12 m4">
+      <div class="card-panel">
+        <h2 class="section-title">{{t "contactsPage.whatsapp"}}</h2>
+        <a href="{{contact.whatsappUrl}}" target="_blank" rel="noopener noreferrer">{{contact.phone}}</a>
+      </div>
+    </div>
+    <div class="col s12 m4">
+      <div class="card-panel">
+        <h2 class="section-title">{{t "contactsPage.hotline"}}</h2>
+        <a href="{{contact.phoneHref}}">{{contact.phone}}</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="social-icons-row">
+    <a href="{{contact.telegramUrl}}" target="_blank" rel="noopener noreferrer" class="social-icon">{{t "contactsPage.telegram"}}</a>
+    <a href="{{contact.whatsappUrl}}" target="_blank" rel="noopener noreferrer" class="social-icon">{{t "contactsPage.whatsapp"}}</a>
+    <a href="{{contact.phoneHref}}" class="social-icon">{{t "contactsPage.call"}}</a>
+  </div>
+</section>

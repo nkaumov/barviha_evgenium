@@ -1,0 +1,66 @@
+﻿<section class="container section">
+  <a href="/villages" class="btn-flat">← {{t "villagesPage.title"}}</a>
+
+  <article class="card village-detail-hero">
+    <div class="village-detail-hero__media">
+      <img
+        class="village-detail-hero__main-image"
+        src="{{villageGalleryMain}}"
+        alt="{{village.name}}"
+        id="village-main-image"
+      />
+      {{#if villageGalleryThumbs.length}}
+        <div class="village-detail-hero__thumbs">
+          {{#each villageGalleryThumbs}}
+            <button
+              class="village-thumb{{#if @first}} is-active{{/if}}"
+              type="button"
+              data-image="{{this}}"
+              aria-label="{{../village.name}}"
+            >
+              <img src="{{this}}" alt="{{../village.name}}" />
+            </button>
+          {{/each}}
+        </div>
+      {{/if}}
+    </div>
+
+    <div class="card-content village-detail-hero__content">
+      <h1 class="card-title village-detail-hero__title">{{village.name}}</h1>
+      <p class="village-detail-hero__description">{{village.description}}</p>
+
+      <div class="village-detail-hero__facts">
+        <span><strong>{{t "objectsPage.distance"}}</strong> {{village.distance}} {{t "objectsPage.distanceFromMkadSuffix"}}</span>
+        <span><strong>{{t "villagesPage.housesCount"}}</strong> {{village.housesCount}}</span>
+      </div>
+    </div>
+  </article>
+</section>
+
+<section class="container section">
+  <h2 class="section-title">{{t "home.objectsCardTitle"}}</h2>
+  <div class="row village-houses-grid">
+    {{#each houses}}
+      <div class="col s12 m6 l4">
+        <article class="card object-card">
+          <div class="card-image">
+            <img src="{{image}}" alt="{{title}}" />
+          </div>
+          <div class="card-content">
+            <span class="card-title">{{title}}</span>
+            <p><strong>{{t "objectsPage.price"}}</strong> {{price}} {{t "units.currency"}}</p>
+            <p><strong>{{t "objectsPage.houseArea"}}</strong> {{area}} {{t "units.squareMeters"}}</p>
+          </div>
+          <div class="card-action">
+            <a class="learn-more" href="/objects/{{id}}">
+              <span class="circle" aria-hidden="true">
+                <span class="icon arrow"></span>
+              </span>
+              <span class="button-text">{{t "objectsPage.moreDetails"}}</span>
+            </a>
+          </div>
+        </article>
+      </div>
+    {{/each}}
+  </div>
+</section>

@@ -1,0 +1,215 @@
+.gallery-page__header {
+  margin-bottom: 1rem;
+}
+
+.gallery-page__header h1 {
+  margin: 0 0 0.45rem;
+  font-size: clamp(1.5rem, 2.2vw, 2.25rem);
+}
+
+.gallery-page__header p {
+  margin: 0;
+  color: #58616b;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.gallery-grid__item {
+  grid-column: span 3;
+  display: block;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  background: #111;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.gallery-grid__item:nth-child(1),
+.gallery-grid__item:nth-child(6) {
+  grid-column: span 6;
+}
+
+.gallery-grid__item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.gallery-grid__caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.65rem 0.75rem;
+  color: #fff;
+  font-size: 0.9rem;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.72));
+}
+
+.gallery-grid__item:hover img,
+.gallery-grid__item:focus-visible img {
+  transform: scale(1.04);
+}
+
+.gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2500;
+  display: none;
+}
+
+.gallery-lightbox.is-open {
+  display: block;
+}
+
+.gallery-lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(7, 10, 14, 0.85);
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.gallery-lightbox__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(1120px, calc(100vw - 32px));
+  height: min(86vh, 760px);
+  margin: 7vh auto 0;
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) 56px;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.gallery-lightbox__figure {
+  margin: 0;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #0d0f12;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+.gallery-lightbox__figure img {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: contain;
+  background: #0d0f12;
+}
+
+.gallery-lightbox__figure figcaption {
+  padding: 0.75rem 0.95rem;
+  color: #dce2e8;
+  font-size: 0.92rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gallery-lightbox__close,
+.gallery-lightbox__nav {
+  border: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  cursor: pointer;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.15);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.gallery-grid__item:hover,
+.gallery-grid__item:focus,
+.gallery-grid__item:focus-visible,
+.gallery-grid__item:active {
+  background: #111;
+  outline: none;
+}
+
+.gallery-lightbox__backdrop:hover,
+.gallery-lightbox__backdrop:focus,
+.gallery-lightbox__backdrop:focus-visible,
+.gallery-lightbox__backdrop:active {
+  background: rgba(7, 10, 14, 0.85);
+  outline: none;
+}
+
+.gallery-lightbox__close:focus,
+.gallery-lightbox__close:focus-visible,
+.gallery-lightbox__close:active,
+.gallery-lightbox__nav:focus,
+.gallery-lightbox__nav:focus-visible,
+.gallery-lightbox__nav:active {
+  background: rgba(255, 255, 255, 0.24);
+  color: #fff;
+  outline: none;
+}
+
+.gallery-lightbox__close {
+  position: absolute;
+  top: -54px;
+  right: 0;
+}
+
+.gallery-lightbox__close:hover,
+.gallery-lightbox__nav:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+@media (max-width: 992px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gallery-grid__item,
+  .gallery-grid__item:nth-child(1),
+  .gallery-grid__item:nth-child(6) {
+    grid-column: span 1;
+  }
+
+  .gallery-lightbox__dialog {
+    grid-template-columns: 42px minmax(0, 1fr) 42px;
+    width: min(920px, calc(100vw - 20px));
+    height: min(82vh, 680px);
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid__item img {
+    height: 200px;
+  }
+
+  .gallery-lightbox__dialog {
+    margin-top: 9vh;
+    height: min(78vh, 560px);
+    gap: 0.35rem;
+    grid-template-columns: 36px minmax(0, 1fr) 36px;
+  }
+
+  .gallery-lightbox__close,
+  .gallery-lightbox__nav {
+    width: 34px;
+    height: 34px;
+  }
+}

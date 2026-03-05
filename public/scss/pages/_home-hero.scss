@@ -1,0 +1,197 @@
+﻿.hero-section {
+  position: relative;
+  min-height: clamp(320px, 80vh, 620px);
+  display: flex;
+  align-items: center;
+  color: #fff;
+  overflow: hidden;
+
+  .hero-section__media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-section__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(10, 10, 10, 0.62), rgba(26, 26, 26, 0.42));
+  }
+
+  .hero-section__content {
+    position: relative;
+    z-index: 1;
+    padding-top: 2.4rem;
+    padding-bottom: 2.4rem;
+  }
+
+  .hero-title {
+    margin: 0 0 0.75rem;
+    font-size: clamp(2rem, 4.2vw, 3.2rem);
+  }
+
+  .hero-subtitle {
+    margin: 0 0 1.2rem;
+    max-width: 640px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+
+    .hero-neon-btn {
+      --hero-btn-w: 260px;
+      --hero-btn-h: 50px;
+      position: relative;
+      display: inline-block;
+      width: var(--hero-btn-w);
+      height: var(--hero-btn-h);
+      text-decoration: none;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: var(--hero-btn-h);
+      color: rgb(255, 255, 255);
+      font-size: 0.98rem;
+      font-family: Verdana, sans-serif;
+      letter-spacing: 4px;
+      background: #232323;
+      border: 0;
+      transition: 1s;
+    }
+
+    .hero-neon-btn > span {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .hero-neon-btn::before,
+    .hero-neon-btn::after,
+    .hero-neon-btn span::before,
+    .hero-neon-btn span::after {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: rgb(255, 255, 255);
+      transition: 1s;
+      mix-blend-mode: hue;
+    }
+
+    .hero-neon-btn::before {
+      top: -2px;
+      left: -2px;
+    }
+
+    .hero-neon-btn::after {
+      top: -2px;
+      right: -2px;
+    }
+
+    .hero-neon-btn span::before {
+      bottom: -2px;
+      left: -2px;
+    }
+
+    .hero-neon-btn span::after {
+      bottom: -2px;
+      right: -2px;
+    }
+
+    .hero-neon-btn:hover::before,
+    .hero-neon-btn:hover::after,
+    .hero-neon-btn:hover span::before,
+    .hero-neon-btn:hover span::after {
+      width: calc(var(--hero-btn-w) / 2);
+      height: calc(var(--hero-btn-h) / 2);
+    }
+
+    .hero-neon-btn:hover,
+    .hero-neon-btn:focus-visible {
+      color: rgb(255, 255, 255);
+      background: #232323;
+    }
+
+    .glow-on-hover {
+      width: 220px;
+      height: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      outline: none;
+      color: #fff;
+      background: transparent;
+      cursor: pointer;
+      position: relative;
+      z-index: 0;
+      border-radius: 0px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .glow-on-hover::before {
+      content: "";
+      background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      background-size: 400%;
+      z-index: -1;
+      filter: blur(5px);
+      width: calc(100% + 4px);
+      height: calc(100% + 4px);
+      animation: hero-glowing 20s linear infinite;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+      border-radius: 10px;
+    }
+
+    .glow-on-hover::after {
+      z-index: -1;
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      left: 0;
+      top: 0;
+      border-radius: 0px;
+      transition: background 0.3s ease-in-out;
+    }
+
+    .glow-on-hover:hover::before,
+    .glow-on-hover:focus-visible::before {
+      opacity: 1;
+    }
+
+    .glow-on-hover:hover::after,
+    .glow-on-hover:focus-visible::after {
+      background: #111;
+    }
+
+    .glow-on-hover:active {
+      color: #000;
+    }
+
+    .glow-on-hover:active::after {
+      background: transparent;
+    }
+  }
+}
+
+@keyframes hero-glowing {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}

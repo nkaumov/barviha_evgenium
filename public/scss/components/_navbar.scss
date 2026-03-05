@@ -1,0 +1,24 @@
+﻿.site-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 2000;
+
+  .nav-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .brand-logo {
+    position: static;
+    transform: none;
+    color: #111;
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+
+  ul li a {
+    color: #222;
+  }
+}

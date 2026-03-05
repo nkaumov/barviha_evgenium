@@ -1,0 +1,41 @@
+﻿<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{t pageTitleKey}} | {{t "common.brand"}}</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/sidebar.css" />
+    
+  </head>
+  <body>
+    {{> navbar}}
+    {{> sidebar}}
+
+    <main class="page-main">
+      {{{body}}}
+    </main>
+
+    {{> floating-contacts}}
+    <button class="back-to-top" id="back-to-top" type="button" aria-label="{{t "common.backToTop"}}">
+      <i class="material-icons" aria-hidden="true">keyboard_arrow_up</i>
+    </button>
+    {{> footer}}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="/scripts/main.js"></script>
+    <script src="/scripts/btn-effects.js"></script>
+    <script src="/scripts/bubbly-button.js"></script>
+    <script src="/scripts/home-picker-filters.js"></script>
+    <script src="/scripts/objects-filters.js"></script>
+    <script src="/scripts/villages-carousel.js"></script>
+    <script src="/scripts/home-content-sliders.js"></script>
+    <script src="/scripts/village-gallery.js"></script>
+    <script src="/scripts/gallery-lightbox.js"></script>
+    <script src="/scripts/review-form.js"></script>
+    <script src="/scripts/back-to-top.js"></script>
+    <script src="/scripts/sidebar.js" defer></script>
+  </body>
+</html>

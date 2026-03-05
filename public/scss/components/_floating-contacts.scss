@@ -1,0 +1,16 @@
+.floating-contacts {
+  position: fixed;
+  left: 18px;
+  bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 996;
+}
+
+@media (max-width: 600px) {
+  .floating-contacts {
+    left: 14px;
+    bottom: 14px;
+  }
+}

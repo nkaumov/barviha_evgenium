@@ -1,0 +1,6 @@
+.env
+node_modules
+demo.html
+# Keep compiled styles in repo for predictable preview in fresh clones
+# var/styles/css should remain tracked
+var/dump_sql/

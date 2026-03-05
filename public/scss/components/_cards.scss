@@ -1,0 +1,19 @@
+.card,
+.card-panel {
+  border-radius: $card-radius;
+}
+
+.object-card p,
+.village-card p {
+  margin: 0.35rem 0;
+}
+
+.object-card .card-image img {
+  height: 220px;
+  object-fit: cover;
+}
+
+.object-detail-card .card-image img {
+  max-height: 520px;
+  object-fit: cover;
+}

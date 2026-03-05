@@ -1,0 +1,25 @@
+<section class="container section article-page">
+  <a class="article-page__back" href="/">{{t "nav.home"}}</a>
+
+  <article class="article-card-page">
+    <header class="article-card-page__header">
+      <p class="article-card-page__eyebrow">{{t "home.lifeArticlesTitle"}}</p>
+      <h1>{{article.title}}</h1>
+      <p class="article-card-page__subtitle">{{article.subtitle}}</p>
+      <div class="article-card-page__meta">
+        <span>{{article.date}}</span>
+        <span>{{article.authorName}} · {{article.authorRole}}</span>
+      </div>
+    </header>
+
+    <div class="article-card-page__cover">
+      <img src="{{article.image}}" alt="{{article.title}}" />
+    </div>
+
+    <div class="article-card-page__body">
+      {{#each article.text}}
+        <p>{{this}}</p>
+      {{/each}}
+    </div>
+  </article>
+</section>

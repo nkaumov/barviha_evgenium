@@ -1,0 +1,181 @@
+﻿{
+    "common": {
+        "brand": "Barviha",
+        "backToTop": "Наверх"
+    },
+    "nav": {
+        "home": "Главная",
+        "villages": "Посёлки",
+        "objects": "Объекты",
+        "housesAndPlots": "Дома/участки",
+        "contacts": "Контакты"
+    },
+    "footer": {
+        "title": "Barviha Estate",
+        "description": "Витрина домов и участков премиум-сегмента.",
+        "navigation": "Навигация"
+    },
+    "floatingContacts": {
+        "ariaWhatsapp": "WhatsApp",
+        "ariaTelegram": "Telegram",
+        "ariaHotline": "Горячая линия"
+    },
+    "home": {
+        "heroTitle": "Дома Барвихи",
+        "heroSubtitle": "Премиальные объекты в лучших посёлках рядом с Москвой.",
+        "ctaObjects": "Перейти к объектам",
+        "ctaRequest": "Оставить заявку",
+        "showcaseTitle": "Лучшие дома",
+        "showcaseImageAlt": "Дом в Барвихе",
+        "villagesCardTitle": "Посёлки",
+        "villagesCardDescription": "Изучите локации и окружение.",
+        "villagesCardButton": "Смотреть посёлки",
+        "objectsCardTitle": "Дома и участки",
+        "objectsCardDescription": "Каталог объектов с базовой фильтрацией.",
+        "objectsCardButton": "Смотреть объекты",
+        "villagesCarouselTitle": "Посёлки Барвихи",
+        "pickerTitle": "Подберите дом в Барвихе",
+        "lifeGalleryTitle": "Жизнь в Барвихе",
+        "lifeArticlesTitle": "Статьи о жизни в Барвихе",
+        "testimonialsTitle": "Отзывы и цитаты",
+        "reviewFormTitle": "Оставьте отзыв о вашем опыте",
+        "reviewFormSubtitle": "Расскажите, как прошел выбор объекта, просмотр и взаимодействие с нашей командой.",
+        "reviewFormHint": "Форма тестовая: позже подключим сохранение в базу и модерацию публикаций.",
+        "reviewNameLabel": "Ваше имя",
+        "reviewNamePlaceholder": "Например, Алексей",
+        "reviewContactLabel": "Контакт для связи",
+        "reviewContactPlaceholder": "Телефон или Telegram",
+        "reviewTextLabel": "Текст отзыва",
+        "reviewTextPlaceholder": "Поделитесь впечатлениями...",
+        "reviewSubmitLabel": "Отправить",
+        "requestFormTitle": "Оставить заявку",
+        "requestFormSubtitle": "Заполните форму, и мы свяжемся с вами для подбора подходящих объектов.",
+        "requestFormHint": "Для связи укажите телефон и ссылку на профиль в удобном мессенджере.",
+        "requestNameLabel": "Ваше имя",
+        "requestNamePlaceholder": "Например, Алексей",
+        "requestPhoneLabel": "Телефон",
+        "requestPhonePlaceholder": "+7 (___) ___-__-__",
+        "requestMessengerLabel": "Ссылка на профиль мессенджера",
+        "requestMessengerPlaceholder": "https://t.me/username или wa.me/...",
+        "requestTextLabel": "Комментарий к заявке",
+        "requestTextPlaceholder": "Опишите, какой объект вы ищете...",
+        "requestSubmitLabel": "Отправить заявку"
+    },
+    "villagesPage": {
+        "title": "Посёлки",
+        "subtitle": "Ключевые локации для покупки дома или участка.",
+        "openObjects": "Смотреть объекты",
+        "mapTitle": "Карта посёлков",
+        "mapPlaceholder": "Здесь будет интерактивная Яндекс.Карта с локациями посёлков.",
+        "details": "Узнать подробнее",
+        "housesCount": "Домов в поселке:"
+    },
+    "objectsPage": {
+        "title": "Дома и участки",
+        "subtitle": "Каталог объектов с основными параметрами.",
+        "filtersTitle": "Фильтры",
+        "maxPrice": "Макс. цена (руб.)",
+        "minHouseArea": "Мин. площадь дома (м²)",
+        "maxMkadDistance": "Макс. удалённость от МКАД (км)",
+        "floors": "Этажи",
+        "minPlotArea": "Мин. площадь участка (сотки)",
+        "resetFilters": "Сбросить фильтры",
+        "village": "Посёлок:",
+        "price": "Цена:",
+        "houseArea": "Площадь дома:",
+        "distance": "Удалённость:",
+        "plot": "Участок:",
+        "moreDetails": "Узнать подробнее",
+        "distanceFromMkadSuffix": "км от МКАД"
+    },
+    "contactsPage": {
+        "title": "Контакты",
+        "subtitle": "Свяжитесь с нами удобным способом.",
+        "telegram": "Telegram",
+        "whatsapp": "WhatsApp",
+        "hotline": "Горячая линия",
+        "call": "Позвонить"
+    },
+    "notFoundPage": {
+        "title": "Страница не найдена",
+        "code": "404",
+        "message": "Страница не найдена.",
+        "backHome": "На главную"
+    },
+    "units": {
+        "currency": "₽",
+        "squareMeters": "м²",
+        "acres": "соток"
+    },
+    "contacts": {
+        "telegramUrl": "https://t.me/your_username",
+        "telegramLabel": "@your_username",
+        "whatsappUrl": "https://wa.me/79000000000",
+        "phone": "+7 (900) 000-00-00",
+        "phoneHref": "tel:+79000000000"
+    },
+    "data": {
+        "heroImages": [
+            "/media/images/houses/ex1.png",
+            "/media/images/houses/ex2.png",
+            "/media/images/houses/ex3.jpg",
+            "/media/images/houses/ex4.jpg",
+            "/media/images/houses/ex5.jpg"
+        ],
+        "villages": [
+            {
+                "id": 1,
+                "name": "Барвиха Luxury Village",
+                "description": "Закрытая территория, премиальная инфраструктура, быстрый выезд на Рублево-Успенское шоссе."
+            },
+            {
+                "id": 2,
+                "name": "Раздоры",
+                "description": "Современные резиденции и участки рядом с природной зоной и школами."
+            },
+            {
+                "id": 3,
+                "name": "Жуковка",
+                "description": "Клубный формат, статусное соседство, продуманная приватность."
+            }
+        ],
+        "objects": [
+            {
+                "id": 101,
+                "title": "Дом в Барвихе",
+                "price": 320000000,
+                "area": 620,
+                "distance": 9,
+                "floors": 2,
+                "plotArea": 18,
+                "village": "Барвиха Luxury Village",
+                "image": "/media/images/houses/ex1.png",
+                "description": "Современный объект в премиальной локации Барвихи."
+            },
+            {
+                "id": 102,
+                "title": "Участок в Раздорах",
+                "price": 110000000,
+                "area": 0,
+                "distance": 12,
+                "floors": 0,
+                "plotArea": 22,
+                "village": "Раздоры",
+                "image": "/media/images/houses/ex2.png",
+                "description": "Современный объект в премиальной локации Барвихи."
+            },
+            {
+                "id": 103,
+                "title": "Резиденция в Жуковке",
+                "price": 450000000,
+                "area": 780,
+                "distance": 14,
+                "floors": 3,
+                "plotArea": 24,
+                "village": "Жуковка",
+                "image": "/media/images/houses/ex3.jpg",
+                "description": "Современный объект в премиальной локации Барвихи."
+            }
+        ]
+    }
+}
