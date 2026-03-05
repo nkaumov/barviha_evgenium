@@ -1,7 +1,8 @@
 ﻿{
     "common": {
         "brand": "Barviha",
-        "backToTop": "Наверх"
+        "backToTop": "Наверх",
+        "workingNow": "Сейчас работаем"
     },
     "nav": {
         "home": "Главная",
@@ -12,8 +13,17 @@
     },
     "footer": {
         "title": "Barviha Estate",
-        "description": "Витрина домов и участков премиум-сегмента.",
-        "navigation": "Навигация"
+        "description": "Каталог домов и участков премиум-сегмента в поселках Барвихи.",
+        "navigation": "Навигация",
+        "villagesTitle": "Поселки",
+        "village1": "Барвиха Luxury Village",
+        "village2": "Жуковка",
+        "village3": "Подушкино",
+        "village4": "Раздоры",
+        "village5": "Усово",
+        "village6": "Горки-2",
+        "village7": "Горки-8",
+        "village8": "Николина Гора"
     },
     "floatingContacts": {
         "ariaWhatsapp": "WhatsApp",

@@ -1,4 +1,4 @@
-﻿<nav class="site-navbar white z-depth-1">
+<nav class="site-navbar white z-depth-1">
   <div class="nav-wrapper container navbar-with-sidebar">
     <a href="/" class="brand-logo navbar-brand">{{t "common.brand"}}</a>
 
@@ -8,5 +8,16 @@
       <li><a href="/objects">{{t "nav.objects"}}</a></li>
       <li><a href="/contacts">{{t "nav.contacts"}}</a></li>
     </ul>
+
+    <div class="navbar-contact hide-on-med-and-down">
+      <a class="navbar-phone" href='{{t "contacts.phoneHref"}}'>{{t "contacts.phone"}}</a>
+      <span class="navbar-status">{{t "common.workingNow"}}</span>
+    </div>
+  </div>
+
+  <div class="container hide-on-large-only navbar-mobile-contact">
+    <a class="navbar-phone" href='{{t "contacts.phoneHref"}}'>{{t "contacts.phone"}}</a>
+    <span class="navbar-status">{{t "common.workingNow"}}</span>
   </div>
 </nav>
+

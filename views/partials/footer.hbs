@@ -1,22 +1,43 @@
-﻿<footer class="page-footer grey darken-4">
-  <div class="container">
-    <div class="row">
-      <div class="col s12 m6">
-        <h5 class="white-text">{{t "footer.title"}}</h5>
-        <p class="grey-text text-lighten-3">{{t "footer.description"}}</p>
-      </div>
-      <div class="col s12 m6">
-        <h6 class="white-text">{{t "footer.navigation"}}</h6>
-        <ul>
-          <li><a class="grey-text text-lighten-3" href="/">{{t "nav.home"}}</a></li>
-          <li><a class="grey-text text-lighten-3" href="/villages">{{t "nav.villages"}}</a></li>
-          <li><a class="grey-text text-lighten-3" href="/objects">{{t "nav.objects"}}</a></li>
-          <li><a class="grey-text text-lighten-3" href="/contacts">{{t "nav.contacts"}}</a></li>
-        </ul>
+<footer class="page-footer">
+  <div class="container footer-main">
+    <div class="footer-col footer-col--about">
+      <h5>{{t "footer.title"}}</h5>
+      <p>{{t "footer.description"}}</p>
+    </div>
+
+    <div class="footer-col footer-col--nav">
+      <h6>{{t "footer.navigation"}}</h6>
+      <ul>
+        <li><a href="/">{{t "nav.home"}}</a></li>
+        <li><a href="/villages">{{t "nav.villages"}}</a></li>
+        <li><a href="/objects">{{t "nav.objects"}}</a></li>
+        <li><a href="/contacts">{{t "nav.contacts"}}</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col footer-col--villages">
+      <h6>{{t "footer.villagesTitle"}}</h6>
+      <ul class="footer-villages-list">
+        <li>{{t "footer.village1"}}</li>
+        <li>{{t "footer.village2"}}</li>
+        <li>{{t "footer.village3"}}</li>
+        <li>{{t "footer.village4"}}</li>
+        <li>{{t "footer.village5"}}</li>
+        <li>{{t "footer.village6"}}</li>
+        <li>{{t "footer.village7"}}</li>
+        <li>{{t "footer.village8"}}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom__inner">
+      <div class="footer-bottom__left">&copy; {{currentYear}} {{t "footer.title"}}</div>
+      <div class="footer-bottom__right">
+        <a class="footer-phone" href='{{t "contacts.phoneHref"}}'>{{t "contacts.phone"}}</a>
+        <span class="footer-status">{{t "common.workingNow"}}</span>
       </div>
     </div>
   </div>
-  <div class="footer-copyright">
-    <div class="container">© {{currentYear}} {{t "footer.title"}}</div>
-  </div>
 </footer>
+

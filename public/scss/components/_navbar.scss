@@ -1,24 +1,103 @@
-﻿.site-navbar {
+.site-navbar {
   position: sticky;
   top: 0;
   z-index: 2000;
+  background: #fff;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.1);
 
   .nav-wrapper {
+    min-height: 60px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 1rem;
+    justify-content: space-between;
+    gap: 0.8rem;
   }
 
   .brand-logo {
     position: static;
     transform: none;
     color: #111;
-    font-size: 1.4rem;
+    font-size: 1.18rem;
     font-weight: 600;
+    letter-spacing: 0.03em;
   }
 
-  ul li a {
-    color: #222;
+  ul {
+    margin-left: auto;
+    margin-right: 1rem;
+
+    li a {
+      color: #1f2937;
+      font-size: 0.8rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding: 0 10px;
+    }
+  }
+}
+
+.navbar-contact,
+.navbar-mobile-contact {
+  display: flex;
+  flex-direction: row;
+  gap: 0.55rem;
+  align-items: center;
+  line-height: 1;
+}
+
+.navbar-phone {
+  color: #0f172a;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.navbar-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.34rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.015em;
+  color: #334155;
+  white-space: nowrap;
+}
+
+.navbar-status::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #37a34a;
+  box-shadow: 0 0 0 2px rgba(55, 163, 74, 0.18);
+}
+
+.navbar-mobile-contact {
+  padding: 0 0 0.45rem;
+  justify-content: center;
+  align-items: center;
+
+  .navbar-phone {
+    font-size: 0.98rem;
+  }
+
+  .navbar-status {
+    font-size: 0.62rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .site-navbar {
+    .nav-wrapper {
+      min-height: 54px;
+      justify-content: center;
+    }
+
+    .brand-logo {
+      max-width: calc(100% - 120px);
+      text-align: center;
+    }
   }
 }
