@@ -18,15 +18,22 @@
     <div class="footer-col footer-col--villages">
       <h6>{{t "footer.villagesTitle"}}</h6>
       <ul class="footer-villages-list">
-        <li>{{t "footer.village1"}}</li>
-        <li>{{t "footer.village2"}}</li>
-        <li>{{t "footer.village3"}}</li>
-        <li>{{t "footer.village4"}}</li>
-        <li>{{t "footer.village5"}}</li>
-        <li>{{t "footer.village6"}}</li>
-        <li>{{t "footer.village7"}}</li>
-        <li>{{t "footer.village8"}}</li>
+        <li><a href="/villages/barviha-luxury-village">{{t "footer.village1"}}</a></li>
+        <li><a href="/villages/zhukovka">{{t "footer.village2"}}</a></li>
+        <li><a href="/villages/podushkino">{{t "footer.village3"}}</a></li>
+        <li><a href="/villages/razdory">{{t "footer.village4"}}</a></li>
+        <li><a href="/villages/usovo">{{t "footer.village5"}}</a></li>
       </ul>
+    </div>
+
+    <div class="footer-col footer-col--presentation">
+      <h6>{{t "footer.presentationTitle"}}</h6>
+      <div class="footer-presentation-card">
+        <img src="/media/images/houses/ex1.png" alt="{{t "home.presentationCoverAlt"}}" />
+        <button class="presentation-inline-btn" type="button" data-open-presentation-modal data-source="footer_presentation">
+          {{t "home.presentationCta"}}
+        </button>
+      </div>
     </div>
   </div>
 
@@ -34,8 +41,8 @@
     <div class="container footer-bottom__inner">
       <div class="footer-bottom__left">&copy; {{currentYear}} {{t "footer.title"}}</div>
       <div class="footer-bottom__right">
-        <a class="footer-phone" href='{{t "contacts.phoneHref"}}'>{{t "contacts.phone"}}</a>
         <span class="footer-status">{{t "common.workingNow"}}</span>
+        <a class="footer-phone" href='{{t "contacts.phoneHref"}}'>{{t "contacts.phone"}}</a>
       </div>
     </div>
   </div>

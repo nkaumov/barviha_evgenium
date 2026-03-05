@@ -1,5 +1,10 @@
 ﻿<section class="container section">
-  <h1 class="page-title">{{t "objectsPage.title"}}</h1>
+  <div class="page-head-with-cta">
+    <h1 class="page-title">{{t "objectsPage.title"}}</h1>
+    <button class="presentation-inline-btn" type="button" data-open-presentation-modal data-source="objects_page_top">
+      {{t "home.ctaRequest"}}
+    </button>
+  </div>
   <p class="page-subtitle">{{t "objectsPage.subtitle"}}</p>
 
   <div class="objects-layout">
@@ -101,4 +106,12 @@
       {{/each}}
     </div>
   </div>
+
+  <div class="presentation-inline-actions">
+    <button class="presentation-inline-btn" type="button" data-open-presentation-modal data-source="objects_page_bottom">
+      {{t "home.ctaRequest"}}
+    </button>
+  </div>
 </section>
+
+

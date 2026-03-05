@@ -1,0 +1,42 @@
+﻿<div
+  class="presentation-modal"
+  id="presentation-modal"
+  aria-hidden="true"
+  data-auto-open="{{#if leadAutoOpen}}1{{else}}0{{/if}}"
+  data-open-source="{{leadSource}}"
+>
+  <div class="presentation-modal__backdrop" data-close-presentation-modal></div>
+  <div class="presentation-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="presentation-modal-title">
+    <button class="presentation-modal__close" type="button" aria-label="{{t "common.close"}}" data-close-presentation-modal>
+      <i class="material-icons" aria-hidden="true">close</i>
+    </button>
+    {{#if leadStatus.submitted}}
+      <div class="presentation-modal__success">
+        <h3 class="presentation-modal__title" id="presentation-modal-title">{{t "home.presentationSubmittedTitle"}}</h3>
+        <p class="presentation-modal__subtitle">{{t "home.presentationSubmittedText"}}</p>
+        <a class="presentation-modal__download" href="/media/docs/barviha-presentation.pdf" download>
+          {{t "home.presentationDownloadNow"}}
+        </a>
+      </div>
+    {{else}}
+      <h3 class="presentation-modal__title" id="presentation-modal-title">{{t "home.presentationModalTitle"}}</h3>
+      <p class="presentation-modal__subtitle">{{t "home.presentationModalSubtitle"}}</p>
+      {{#if leadStatus.error}}
+        <p class="presentation-modal__error">{{t "home.presentationErrorMessage"}}</p>
+      {{/if}}
+      <form id="presentation-modal-form" class="presentation-modal__form" action="/presentation-request" method="post">
+        <label class="presentation-modal__field">
+          <span>{{t "home.requestNameLabel"}}</span>
+          <input type="text" name="name" placeholder="{{t "home.requestNamePlaceholder"}}" required />
+        </label>
+        <label class="presentation-modal__field">
+          <span>{{t "home.requestPhoneLabel"}}</span>
+          <input type="tel" name="phone" placeholder="{{t "home.requestPhonePlaceholder"}}" required />
+        </label>
+        <input type="hidden" name="source_page" id="presentation-source-input" value="modal" />
+        <input type="hidden" name="return_to" id="presentation-return-input" value="/" />
+        <button class="presentation-modal__submit" type="submit">{{t "home.presentationModalSubmit"}}</button>
+      </form>
+    {{/if}}
+  </div>
+</div>

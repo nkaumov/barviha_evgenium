@@ -40,12 +40,12 @@
     </div>
 
     <div class="card-action object-detail-hero__actions">
-      <a class="learn-more" href="/?requestObject={{object.id}}#request-form">
+      <button class="learn-more" type="button" data-open-presentation-modal data-source="object_{{object.id}}">
         <span class="circle" aria-hidden="true">
           <span class="icon arrow"></span>
         </span>
         <span class="button-text">{{t "home.ctaRequest"}}</span>
-      </a>
+      </button>
     </div>
   </article>
 </section>

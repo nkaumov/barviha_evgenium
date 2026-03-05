@@ -210,6 +210,16 @@
   gap: 0.65rem;
 }
 
+.presentation-modal__error {
+  margin: 0 0 0.7rem;
+  border: 1px solid #efcccc;
+  border-radius: 6px;
+  padding: 0.55rem 0.65rem;
+  background: #fff6f6;
+  color: #7a2424;
+  font-size: 0.86rem;
+}
+
 .presentation-modal__field {
   display: grid;
   gap: 0.32rem;
@@ -249,6 +259,48 @@
 .presentation-modal__submit:focus,
 .presentation-modal__submit:focus-visible,
 .presentation-modal__submit:active {
+  background: #111827 !important;
+  border-color: #111827 !important;
+  color: #fff !important;
+  outline: none;
+}
+
+.presentation-modal__success {
+  padding: 0.75rem 0.2rem 0.45rem;
+}
+
+.presentation-modal__success .presentation-modal__title {
+  margin-bottom: 0.55rem;
+}
+
+.presentation-modal__success .presentation-modal__subtitle {
+  margin: 0 0 0.85rem;
+  line-height: 1.6;
+}
+
+.presentation-modal__download {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+  height: 42px;
+  padding: 0 1rem;
+  border: 1px solid #1f2937;
+  border-radius: 6px;
+  background: #1f2937;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.presentation-modal__download:hover,
+.presentation-modal__download:focus,
+.presentation-modal__download:focus-visible,
+.presentation-modal__download:active {
   background: #111827 !important;
   border-color: #111827 !important;
   color: #fff !important;

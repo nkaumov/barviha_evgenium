@@ -10,6 +10,18 @@ const siteRoutes = require("./routes/site");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const buildLeadStatus = (query = {}) => {
+  if (query.lead === "success") {
+    return { submitted: true, error: false };
+  }
+
+  if (query.lead === "error") {
+    return { submitted: false, error: true };
+  }
+
+  return null;
+};
+
 const getLocaleValue = (object, key) => {
   if (!key || typeof key !== "string") {
     return "";
@@ -52,6 +64,9 @@ app.use((req, res, next) => {
   res.locals.currentPath = req.path;
   res.locals.currentYear = new Date().getFullYear();
   res.locals.contact = locale.contacts;
+  res.locals.leadStatus = buildLeadStatus(req.query || {});
+  res.locals.leadAutoOpen = Boolean(res.locals.leadStatus) || (req.query && req.query.presentation === "open");
+  res.locals.leadSource = String((req.query && req.query.source) || "").slice(0, 255);
   next();
 });
 

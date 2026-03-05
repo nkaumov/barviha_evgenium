@@ -234,6 +234,65 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.post("/presentation-request", async (req, res) => {
+  const rawReturnTo = String(req.body.return_to || "").trim();
+  const fallbackReferer = String(req.get("referer") || "").trim();
+  const returnBase = (() => {
+    const candidates = [rawReturnTo, fallbackReferer];
+    for (const candidate of candidates) {
+      if (!candidate) continue;
+      try {
+        const parsed = new URL(candidate, "http://localhost");
+        const path = `${parsed.pathname || "/"}${parsed.search || ""}`;
+        if (path.startsWith("/") && !path.startsWith("//")) return path;
+      } catch {
+        continue;
+      }
+    }
+    return "/";
+  })();
+
+  const sourceRaw = String(req.body.source_page || "").trim();
+  const safeSource = sourceRaw ? sourceRaw.slice(0, 255) : "modal";
+
+  const buildReturnUrl = (status) => {
+    const separator = returnBase.includes("?") ? "&" : "?";
+    return `${returnBase}${separator}lead=${status}&source=${encodeURIComponent(safeSource)}`;
+  };
+
+  const fullName = String(req.body.name || "").trim();
+  const phoneRaw = String(req.body.phone || "").trim();
+  const phone = phoneRaw.replace(/[^\d+]/g, "");
+
+  if (!fullName || phone.length < 7) {
+    return res.redirect(buildReturnUrl("error"));
+  }
+
+  try {
+    await pool.query(
+      `
+      INSERT INTO inquiries (
+        full_name,
+        phone,
+        message,
+        source_page,
+        status
+      ) VALUES (?, ?, ?, ?, 'new')
+    `,
+      [
+        fullName,
+        phone,
+        "Запрос презентации",
+        safeSource
+      ]
+    );
+
+    return res.redirect(buildReturnUrl("success"));
+  } catch {
+    return res.redirect(buildReturnUrl("error"));
+  }
+});
+
 router.get("/articles/:slug", (req, res) => {
   const article = {
     title: "Тестовая статья о жизни в Барвихе",

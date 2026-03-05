@@ -43,7 +43,7 @@ body {
   min-height: 60px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 0.8rem;
 }
 .site-navbar .brand-logo {
@@ -54,11 +54,16 @@ body {
   font-weight: 600;
   letter-spacing: 0.03em;
 }
-.site-navbar ul {
-  margin-left: auto;
-  margin-right: 1rem;
+.site-navbar ul,
+.site-navbar ul.right {
+  float: none !important;
+  display: flex;
+  align-items: center;
+  margin-left: 1.1rem;
+  margin-right: 0;
 }
-.site-navbar ul li a {
+.site-navbar ul li a,
+.site-navbar ul.right li a {
   color: #1f2937;
   font-size: 0.8rem;
   letter-spacing: 0.03em;
@@ -74,6 +79,10 @@ body {
   gap: 0.55rem;
   align-items: center;
   line-height: 1;
+}
+
+.navbar-contact {
+  margin-left: auto;
 }
 
 .navbar-phone {
@@ -138,7 +147,7 @@ body {
 .footer-main {
   padding: 2rem 0 1.4rem;
   display: grid;
-  grid-template-columns: 1.1fr 0.8fr 1.2fr;
+  grid-template-columns: 1.05fr 0.75fr 1fr 0.85fr;
   gap: 2rem;
 }
 
@@ -162,13 +171,33 @@ body {
 }
 
 .footer-villages-list {
-  columns: 2;
-  column-gap: 1.4rem;
+  columns: 1;
+  column-gap: 0;
 }
 .footer-villages-list li {
   break-inside: avoid;
   margin-bottom: 0.45rem;
   color: #cbd5e1;
+}
+
+.footer-col--presentation .presentation-inline-btn {
+  width: 100%;
+  min-width: 0;
+}
+
+.footer-presentation-card {
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 6px;
+  padding: 0.6rem;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.footer-presentation-card img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 0.55rem;
 }
 
 .footer-bottom {
@@ -503,6 +532,62 @@ body {
     height: 42px;
   }
 }
+.presentation-inline-actions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.presentation-inline-btn {
+  appearance: none;
+  cursor: pointer;
+  min-width: 200px;
+  height: 42px;
+  padding: 0 1rem;
+  border: 1px solid #1f2937;
+  border-radius: 6px;
+  background: #1f2937;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.presentation-inline-btn:hover,
+.presentation-inline-btn:focus,
+.presentation-inline-btn:focus-visible,
+.presentation-inline-btn:active {
+  background: #111827 !important;
+  border-color: #111827 !important;
+  color: #fff !important;
+  outline: none;
+}
+
+.page-head-with-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.page-head-with-cta .page-title {
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  .page-head-with-cta {
+    align-items: flex-start;
+  }
+  .page-head-with-cta .presentation-inline-btn {
+    width: 100%;
+  }
+}
 .hero-section {
   position: relative;
   min-height: clamp(320px, 80vh, 620px);
@@ -786,6 +871,16 @@ body {
   gap: 0.65rem;
 }
 
+.presentation-modal__error {
+  margin: 0 0 0.7rem;
+  border: 1px solid #efcccc;
+  border-radius: 6px;
+  padding: 0.55rem 0.65rem;
+  background: #fff6f6;
+  color: #7a2424;
+  font-size: 0.86rem;
+}
+
 .presentation-modal__field {
   display: grid;
   gap: 0.32rem;
@@ -825,6 +920,48 @@ body {
 .presentation-modal__submit:focus,
 .presentation-modal__submit:focus-visible,
 .presentation-modal__submit:active {
+  background: #111827 !important;
+  border-color: #111827 !important;
+  color: #fff !important;
+  outline: none;
+}
+
+.presentation-modal__success {
+  padding: 0.75rem 0.2rem 0.45rem;
+}
+
+.presentation-modal__success .presentation-modal__title {
+  margin-bottom: 0.55rem;
+}
+
+.presentation-modal__success .presentation-modal__subtitle {
+  margin: 0 0 0.85rem;
+  line-height: 1.6;
+}
+
+.presentation-modal__download {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+  height: 42px;
+  padding: 0 1rem;
+  border: 1px solid #1f2937;
+  border-radius: 6px;
+  background: #1f2937;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.presentation-modal__download:hover,
+.presentation-modal__download:focus,
+.presentation-modal__download:focus-visible,
+.presentation-modal__download:active {
   background: #111827 !important;
   border-color: #111827 !important;
   color: #fff !important;
@@ -1265,6 +1402,8 @@ body.modal-open {
   margin-top: 1rem;
   display: flex;
   justify-content: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
 }
 
 .villages-roulette-section__actions .learn-more {
