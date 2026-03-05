@@ -1,100 +1,53 @@
-$bubbly-pink: #5f7e9a;
+$bubbly-bg: #2f3640;
+$bubbly-bg-hover: #1f242b;
 $bubbly-text: #fff;
 
 .bubbly-button {
-  font-family: "Helvetica", "Arial", sans-serif;
-  display: inline-block;
-  font-size: 0.92rem;
-  padding: 0.75rem 1.3rem;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  min-width: 140px;
+  height: 42px;
+  padding: 0 1.1rem;
   -webkit-appearance: none;
   appearance: none;
-  background-color: $bubbly-pink !important;
+  background-color: $bubbly-bg !important;
   color: $bubbly-text !important;
-  border-radius: 6px;
-  border: none;
+  border-radius: 0;
+  border: 1px solid $bubbly-bg !important;
   cursor: pointer;
   position: relative;
-  transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
-  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.42) !important;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  box-shadow: none !important;
   z-index: 1;
 }
 
 .bubbly-button:focus-visible {
-  outline: 2px solid rgba(255, 0, 129, 0.35);
+  outline: 2px solid rgba(31, 36, 43, 0.35);
   outline-offset: 2px;
 }
 
 .bubbly-button::before,
 .bubbly-button::after {
-  position: absolute;
-  content: "";
-  display: block;
-  width: 140%;
-  height: 100%;
-  left: -20%;
-  z-index: -1;
-  transition: all ease-in-out 0.5s;
-  background-repeat: no-repeat;
-  pointer-events: none;
-}
-
-.bubbly-button::before {
-  display: none;
-  top: -75%;
-  background-image:
-    radial-gradient(circle, $bubbly-pink 20%, transparent 20%),
-    radial-gradient(circle, transparent 20%, $bubbly-pink 20%, transparent 30%),
-    radial-gradient(circle, $bubbly-pink 20%, transparent 20%),
-    radial-gradient(circle, $bubbly-pink 20%, transparent 20%),
-    radial-gradient(circle, transparent 10%, $bubbly-pink 15%, transparent 20%),
-    radial-gradient(circle, $bubbly-pink 20%, transparent 20%),
-    radial-gradient(circle, $bubbly-pink 20%, transparent 20%),
-    radial-gradient(circle, $bubbly-pink 20%, transparent 20%),
-    radial-gradient(circle, $bubbly-pink 20%, transparent 20%);
-  background-size:
-    10% 10%,
-    20% 20%,
-    15% 15%,
-    20% 20%,
-    18% 18%,
-    10% 10%,
-    15% 15%,
-    10% 10%,
-    18% 18%;
-}
-
-.bubbly-button::after {
-  display: none;
-  bottom: -75%;
-  background-image:
-    radial-gradient(circle, $bubbly-pink 20%, transparent 20%),
-    radial-gradient(circle, $bubbly-pink 20%, transparent 20%),
-    radial-gradient(circle, transparent 10%, $bubbly-pink 15%, transparent 20%),
-    radial-gradient(circle, $bubbly-pink 20%, transparent 20%),
-    radial-gradient(circle, $bubbly-pink 20%, transparent 20%),
-    radial-gradient(circle, $bubbly-pink 20%, transparent 20%),
-    radial-gradient(circle, $bubbly-pink 20%, transparent 20%);
-  background-size:
-    15% 15%,
-    20% 20%,
-    18% 18%,
-    20% 20%,
-    15% 15%,
-    10% 10%,
-    20% 20%;
+  display: none !important;
 }
 
 .bubbly-button:active {
-  transform: scale(0.94);
-  background-color: #516f8a !important;
+  background-color: $bubbly-bg-hover !important;
   color: $bubbly-text !important;
-  box-shadow: 0 2px 18px rgba(95, 126, 154, 0.22) !important;
+  box-shadow: none !important;
 }
 
 .bubbly-button:hover,
 .bubbly-button:focus,
 .bubbly-button:focus-visible {
-  background-color: #5f7e9a !important;
+  background-color: $bubbly-bg-hover !important;
+  border-color: $bubbly-bg-hover !important;
   color: $bubbly-text !important;
 }
 
@@ -103,101 +56,5 @@ $bubbly-text: #fff;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  min-width: 132px;
-}
-
-.bubbly-button.animate::before {
-  display: block;
-  animation: topBubbles ease-in-out 0.75s forwards;
-}
-
-.bubbly-button.animate::after {
-  display: block;
-  animation: bottomBubbles ease-in-out 0.75s forwards;
-}
-
-@keyframes topBubbles {
-  0% {
-    background-position:
-      5% 90%,
-      10% 90%,
-      10% 90%,
-      15% 90%,
-      25% 90%,
-      25% 90%,
-      40% 90%,
-      55% 90%,
-      70% 90%;
-  }
-  50% {
-    background-position:
-      0% 80%,
-      0% 20%,
-      10% 40%,
-      20% 0%,
-      30% 30%,
-      22% 50%,
-      50% 50%,
-      65% 20%,
-      90% 30%;
-  }
-  100% {
-    background-position:
-      0% 70%,
-      0% 10%,
-      10% 30%,
-      20% -10%,
-      30% 20%,
-      22% 40%,
-      50% 40%,
-      65% 10%,
-      90% 20%;
-    background-size:
-      0% 0%,
-      0% 0%,
-      0% 0%,
-      0% 0%,
-      0% 0%,
-      0% 0%;
-  }
-}
-
-@keyframes bottomBubbles {
-  0% {
-    background-position:
-      10% -10%,
-      30% 10%,
-      55% -10%,
-      70% -10%,
-      85% -10%,
-      70% -10%,
-      70% 0%;
-  }
-  50% {
-    background-position:
-      0% 80%,
-      20% 80%,
-      45% 60%,
-      60% 100%,
-      75% 70%,
-      95% 60%,
-      105% 0%;
-  }
-  100% {
-    background-position:
-      0% 90%,
-      20% 90%,
-      45% 70%,
-      60% 110%,
-      75% 80%,
-      95% 70%,
-      110% 10%;
-    background-size:
-      0% 0%,
-      0% 0%,
-      0% 0%,
-      0% 0%,
-      0% 0%,
-      0% 0%;
-  }
+  min-width: 128px;
 }

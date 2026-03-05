@@ -5,9 +5,6 @@
 
   if (!btn || !sidebar || !backdrop) return;
 
-  const links = Array.from(sidebar.querySelectorAll('.sidebar__nav a'));
-  links.forEach((a, i) => a.style.setProperty('--i', String(i)));
-
   let lastFocused = null;
   const supportsStableGutter =
     typeof CSS !== 'undefined' && typeof CSS.supports === 'function' && CSS.supports('scrollbar-gutter: stable');
@@ -91,15 +88,4 @@
     if (a) closeSidebar();
   });
 
-  btn.addEventListener('mousemove', (e) => {
-    if (btn.getAttribute('data-magnet') !== '1') return;
-    const r = btn.getBoundingClientRect();
-    const dx = (e.clientX - (r.left + r.width / 2)) / r.width;
-    const dy = (e.clientY - (r.top + r.height / 2)) / r.height;
-    btn.style.transform = `translate(${dx * 4}px, ${dy * 4}px) scale(1.02)`;
-  });
-
-  btn.addEventListener('mouseleave', () => {
-    btn.style.transform = '';
-  });
 })();
