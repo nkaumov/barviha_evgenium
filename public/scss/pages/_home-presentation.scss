@@ -1,0 +1,260 @@
+.presentation-download-section {
+  margin-top: 1.5rem;
+}
+
+.presentation-download-card {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 1.2rem;
+  border: 1px solid #d8dee6;
+  background: #f8fafc;
+  border-radius: 14px;
+  padding: 1.2rem;
+}
+
+.presentation-download-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.62rem;
+  justify-content: center;
+}
+
+.presentation-download-card__eyebrow {
+  margin: 0;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #475569;
+}
+
+.presentation-download-card__title {
+  margin: 0;
+  font-size: clamp(1.35rem, 2vw, 1.9rem);
+  line-height: 1.2;
+  color: #0f172a;
+}
+
+.presentation-download-card__text {
+  margin: 0;
+  color: #334155;
+  max-width: 560px;
+}
+
+.presentation-download-card__btn {
+  appearance: none;
+  cursor: pointer;
+  margin-top: 0.3rem;
+  align-self: flex-start;
+  min-width: 220px;
+  height: 44px;
+  padding: 0 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: 1px solid #1f2937;
+  background: #1f2937;
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  border-radius: 6px;
+}
+
+.presentation-download-card__btn:hover,
+.presentation-download-card__btn:focus,
+.presentation-download-card__btn:focus-visible,
+.presentation-download-card__btn:active {
+  background: #111827 !important;
+  border-color: #111827 !important;
+  color: #fff !important;
+  outline: none;
+}
+
+.presentation-download-card__media {
+  position: relative;
+  justify-self: center;
+  width: min(250px, 100%);
+  aspect-ratio: 4 / 5;
+  border: 1px solid #cfd8e3;
+  background: #fff;
+  overflow: hidden;
+}
+
+.presentation-download-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.presentation-download-card__badge {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: #111827;
+  color: #fff;
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.2;
+  padding: 0.2rem;
+}
+
+@media (max-width: 992px) {
+  .presentation-download-card {
+    grid-template-columns: 1fr;
+  }
+
+  .presentation-download-card__media {
+    width: min(260px, 100%);
+  }
+}
+
+@media (max-width: 600px) {
+  .presentation-download-section {
+    margin-top: 1.1rem;
+  }
+
+  .presentation-download-card {
+    padding: 0.95rem;
+    gap: 0.9rem;
+  }
+
+  .presentation-download-card__btn {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+.presentation-modal {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  z-index: 3000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.presentation-modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.presentation-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 14, 22, 0.54);
+}
+
+.presentation-modal__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(520px, calc(100vw - 32px));
+  border: 1px solid #d8dee6;
+  border-radius: 6px;
+  background: #fff;
+  padding: 1rem;
+}
+
+.presentation-modal__close {
+  appearance: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  border: 1px solid #d8dee6;
+  border-radius: 6px;
+  background: #fff;
+  color: #111827;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.presentation-modal__close:hover,
+.presentation-modal__close:focus,
+.presentation-modal__close:focus-visible,
+.presentation-modal__close:active {
+  background: #f3f4f6 !important;
+  border-color: #cbd5e1 !important;
+  color: #111827 !important;
+  outline: none;
+}
+
+.presentation-modal__title {
+  margin: 0 0 0.4rem;
+  font-size: 1.25rem;
+  color: #0f172a;
+}
+
+.presentation-modal__subtitle {
+  margin: 0 0 0.9rem;
+  color: #475569;
+}
+
+.presentation-modal__form {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.presentation-modal__field {
+  display: grid;
+  gap: 0.32rem;
+}
+
+.presentation-modal__field span {
+  font-size: 0.86rem;
+  color: #334155;
+}
+
+.presentation-modal__field input {
+  width: 100%;
+  border: 1px solid #cfd8e3;
+  border-radius: 6px;
+  padding: 0.62rem 0.72rem;
+  margin: 0;
+}
+
+.presentation-modal__submit {
+  appearance: none;
+  cursor: pointer;
+  margin-top: 0.25rem;
+  min-width: 220px;
+  height: 42px;
+  padding: 0 1rem;
+  border: 1px solid #1f2937;
+  border-radius: 6px;
+  background: #1f2937;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.presentation-modal__submit:hover,
+.presentation-modal__submit:focus,
+.presentation-modal__submit:focus-visible,
+.presentation-modal__submit:active {
+  background: #111827 !important;
+  border-color: #111827 !important;
+  color: #fff !important;
+  outline: none;
+}
+
+body.modal-open {
+  overflow: hidden;
+}

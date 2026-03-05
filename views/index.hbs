@@ -21,6 +21,45 @@
   </div>
 </section>
 
+<section class="container section presentation-download-section">
+  <div class="presentation-download-card">
+    <div class="presentation-download-card__content">
+      <p class="presentation-download-card__eyebrow">{{t "home.presentationEyebrow"}}</p>
+      <h2 class="presentation-download-card__title">{{t "home.presentationTitle"}}</h2>
+      <p class="presentation-download-card__text">{{t "home.presentationText"}}</p>
+      <button class="presentation-download-card__btn" type="button" id="open-presentation-modal">
+        {{t "home.presentationCta"}}
+      </button>
+    </div>
+    <div class="presentation-download-card__media">
+      <img src="/media/images/houses/ex1.png" alt="{{t "home.presentationCoverAlt"}}" />
+      <span class="presentation-download-card__badge">{{t "home.presentationBadge"}}</span>
+    </div>
+  </div>
+</section>
+
+<div class="presentation-modal" id="presentation-modal" aria-hidden="true">
+  <div class="presentation-modal__backdrop" data-close-presentation-modal></div>
+  <div class="presentation-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="presentation-modal-title">
+    <button class="presentation-modal__close" type="button" aria-label="{{t "common.close"}}" data-close-presentation-modal>
+      <i class="material-icons" aria-hidden="true">close</i>
+    </button>
+    <h3 class="presentation-modal__title" id="presentation-modal-title">{{t "home.presentationModalTitle"}}</h3>
+    <p class="presentation-modal__subtitle">{{t "home.presentationModalSubtitle"}}</p>
+    <form id="presentation-modal-form" class="presentation-modal__form" action="#" method="post">
+      <label class="presentation-modal__field">
+        <span>{{t "home.requestNameLabel"}}</span>
+        <input type="text" name="name" placeholder="{{t "home.requestNamePlaceholder"}}" required />
+      </label>
+      <label class="presentation-modal__field">
+        <span>{{t "home.requestPhoneLabel"}}</span>
+        <input type="tel" name="phone" placeholder="{{t "home.requestPhonePlaceholder"}}" required />
+      </label>
+      <button class="presentation-modal__submit" type="submit">{{t "home.presentationModalSubmit"}}</button>
+    </form>
+  </div>
+</div>
+
 <section class="container section villages-roulette-section">
   <h2 class="section-title">{{t "home.villagesCarouselTitle"}}</h2>
   <div class="villages-roulette-wrap">

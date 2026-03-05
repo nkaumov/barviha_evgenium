@@ -2,7 +2,8 @@
     "common": {
         "brand": "Barviha",
         "backToTop": "Наверх",
-        "workingNow": "Сейчас работаем"
+        "workingNow": "Сейчас работаем",
+        "close": "Закрыть"
     },
     "nav": {
         "home": "Главная",
@@ -35,6 +36,15 @@
         "heroSubtitle": "Премиальные объекты в лучших посёлках рядом с Москвой.",
         "ctaObjects": "Перейти к объектам",
         "ctaRequest": "Оставить заявку",
+        "presentationEyebrow": "Полный каталог",
+        "presentationTitle": "Скачать полную презентацию поселков Барвихи",
+        "presentationText": "Актуальные объекты, цены и параметры в одном PDF-файле. Оставьте заявку, чтобы получить материал и консультацию по выбору.",
+        "presentationCta": "Скачать презентацию",
+        "presentationCoverAlt": "Обложка презентации поселков Барвихи",
+        "presentationBadge": "Март 2026",
+        "presentationModalTitle": "Получить презентацию",
+        "presentationModalSubtitle": "Оставьте имя и телефон. На следующем этапе подключим отправку заявки и выдачу PDF.",
+        "presentationModalSubmit": "Отправить",
         "showcaseTitle": "Лучшие дома",
         "showcaseImageAlt": "Дом в Барвихе",
         "villagesCardTitle": "Посёлки",
